@@ -79,8 +79,7 @@ export const login =
 export const logout = () => (dispatch: AppDispatch) => {
   dispatch(setToken(''));
   dispatch(setIsAuth(false));
-  localStorage.removeItem('isAuth');
-  localStorage.removeItem('token');
+  localStorage.clear();
 };
 
 export default authSlice.reducer;

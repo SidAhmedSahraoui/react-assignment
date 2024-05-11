@@ -20,6 +20,7 @@ module.exports = {
   },
   plugins: ['react-refresh', 'prettier'],
   rules: {
+    'react/no-array-index-key': 'off',
     'import/no-cycle': 'off',
     'no-param-reassign': 'off',
     'react/self-closing-comp': 'off',

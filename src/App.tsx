@@ -5,6 +5,7 @@ import { store } from './redux/store';
 
 // pages
 import Login from './components/auth';
+import Dashboard from './components/dashboard';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Login />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </Router>
       </Provider>
