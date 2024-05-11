@@ -4,14 +4,30 @@ import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import useStyles from './style';
 import colors from '../../styles/colors';
 
+// redux
+import { useAppDispatch } from '../../redux/hooks';
+
+// actions
+import { editTodo, removeTodo } from '../../redux/todoSlice';
+
 const Card: React.FC<{
   content: string;
-  onDelete: () => void;
-  onEdit: () => void;
-}> = ({ content, onDelete, onEdit }) => {
+  index: number;
+}> = ({ content, index }) => {
   const classes = useStyles();
+  const dispatch = useAppDispatch();
   const [contentEdit, setContentEdit] = useState(content);
   const [edit, setEdit] = useState(false);
+
+  const onEdit = () => {
+    dispatch(editTodo({ index, content: contentEdit }));
+    setEdit(false);
+  };
+
+  const onDelete = () => {
+    dispatch(removeTodo(index));
+  };
+
   return (
     <>
       <div className={classes.card}>

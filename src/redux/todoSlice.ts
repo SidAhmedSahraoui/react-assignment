@@ -30,7 +30,7 @@ const todoSlice = createSlice({
     },
     // edit todo with index
     editTodo: (state, action) => {
-      state.todos[action.payload.index] = action.payload.todo;
+      state.todos[action.payload.index] = action.payload.content;
       localStorage.setItem('todos', state.todos.join(','));
       toast.success('Todo edited successfully');
     },

@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { logout } from '../../redux/authSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import useStyles from './style';
 import { WEBSITE_NAME } from '../../utils/appData';
 import Spinner from '../../layouts/spinner';
-import { addTodo, removeTodo } from '../../redux/todoSlice';
+import { addTodo } from '../../redux/todoSlice';
 import Card from '../../layouts/card';
 
 const Dashboard: React.FC = () => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
   const { todos } = useAppSelector((state) => state.todoSlice);
-  const { loading } = useAppSelector((state) => state.authSlice);
+  const { isAuth, loading } = useAppSelector((state) => state.authSlice);
+  const [todoList, setTodoList] = useState<string[]>(todos);
 
   const [todoContent, setTodoContent] = useState<string>('');
   const [addMode, setAddMode] = useState<boolean>(false);
 
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+    const search = e.target.value;
+    if (search.length < 1) {
+      setTodoList(todos);
+    } else {
+      const filtered = todos.filter((todo) =>
+        todo.toLowerCase().includes(search.toLowerCase())
+      );
+      setTodoList(filtered);
+    }
   };
 
   const onEnableAddMode = () => {
@@ -35,7 +44,19 @@ const Dashboard: React.FC = () => {
       return;
     }
     dispatch(addTodo(todoContent));
+    setTodoContent('');
+    setAddMode(false);
   };
+
+  useEffect(() => {
+    setTodoList(todos);
+  }, [todos]);
+
+  useEffect(() => {
+    if (!isAuth) {
+      window.location.href = '/';
+    }
+  }, [isAuth]);
 
   return (
     <>
@@ -72,13 +93,13 @@ const Dashboard: React.FC = () => {
               type="button"
               onClick={onEnableAddMode}
             >
-              New Todo
+              New
             </button>
           </div>
           <h6 className="text-center">
-            Todos ({todos !== null && todos.length})
+            Todos ({todoList !== null && todoList.length})
           </h6>
-          {todos !== null && !loading ? (
+          {todoList !== null && !loading ? (
             <div className="cards-list">
               {addMode ? (
                 <div className="add-todo">
@@ -98,21 +119,13 @@ const Dashboard: React.FC = () => {
                   </button>
                 </div>
               ) : null}
-              {todos.length < 1 ? (
+              {todoList.length < 1 ? (
                 <div className="no-todos">
                   <h5>No Todos!</h5>
                 </div>
               ) : (
-                todos.map((todo, index) => (
-                  <Card
-                    content={todo}
-                    onDelete={() => {
-                      dispatch(removeTodo(index));
-                      console.log('delete', index);
-                    }}
-                    onEdit={() => {}}
-                    key={index}
-                  />
+                todoList.map((todo, index) => (
+                  <Card content={todo} index={index} key={index} />
                 ))
               )}
             </div>
