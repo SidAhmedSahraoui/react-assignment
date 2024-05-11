@@ -4,105 +4,79 @@ import {
   CARD_SHADOW,
   BUTTON_PRIMARY,
   INPUT_TEXT,
-  SIDEBAR_TITLE,
-  POSTITEM_CARD,
-  LINK_PRIMARY,
+  BUTTON_PRIMARY_OUTLINE,
 } from '../../styles/atoms';
 
 const useStyles = createUseStyles({
   page: {
-    padding: '40px 20px',
-    marginBottom: '40px',
-    '&.card-shadow': CARD_SHADOW,
-    '&> .title': {
-      color: colors.primary,
-    },
-    '& .subtitle': {
-      color: colors['text-gray-700'],
-      fontWeight: '400',
+    padding: '16px',
+    minWidth: '80%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '20px',
+    '& .header': {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      width: '100%',
+      '& .button-primary': BUTTON_PRIMARY,
+      '& .head': {
+        '&> .title': {
+          color: colors.primary,
+        },
+        '& .subtitle': {
+          color: colors['text-gray-700'],
+          fontWeight: '400',
+        },
+      },
     },
 
-    '& .card-shadow': CARD_SHADOW,
-    '& .sidebar-title': SIDEBAR_TITLE,
-    '& .messageitem': {
-      ...POSTITEM_CARD,
-      '& .icon': {
-        fontSize: '36px',
+    '& .card-shadow': {
+      ...CARD_SHADOW,
+      minWidth: '80%',
+      maxWidth: '100%',
+      padding: '16px',
+      margin: 'auto',
+      backgroundColor: colors['text-gray-100'],
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      '& .text-center': {
+        textAlign: 'center',
+        width: '100%',
         color: colors['text-gray-700'],
       },
-      '& .user': {
-        fontWeight: '600',
-        color: colors['text-gray-700'],
+      '& .search-todo': {
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexWrap: 'nowrap',
+        alignItems: 'center',
+        width: '100%',
+        gap: '4px',
+        '& .search-input': { ...INPUT_TEXT, maxWidth: '60%' },
+        '& .button-primary': BUTTON_PRIMARY_OUTLINE,
       },
-      '& .message': {
-        color: colors['text-gray-700'],
-      },
-      '& .message-date': {
-        fontWeight: '500',
-        fontSize: '14px',
-        color: colors['text-gray-500'],
-      },
-      '& .unread-icon': {
-        fontSize: '10px',
-        color: colors.danger,
-      },
-    },
-    '& .link-primary': LINK_PRIMARY,
-    '& .conversation-messages': {
-      '& .other-user-details': {
-        '& .icon': {
-          fontSize: '36px',
-          color: colors['text-gray-700'],
-        },
-        '& .username': {
-          fontWeight: '600',
-          color: colors['text-gray-700'],
-        },
-      },
-      '& .messages': {
-        '& .message': {
-          marginBottom: '1rem',
-        },
-        '& .message-left': {
-          justifyContent: 'flex-start',
+      '& .cards-list': {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        gap: '10px',
+        width: '100%',
+        '& .add-todo': {
+          width: '80%',
+          margin: 'auto',
           display: 'flex',
-          textAlign: 'left',
-          '& .content': {
-            background: colors['text-gray-100'],
-          },
-        },
-        '& .message-right': {
-          justifyContent: 'flex-end',
-          display: 'flex',
-          textAlign: 'right',
-          '& .content': {
-            background: colors.primary,
-            color: colors['text-white'],
-          },
-        },
-        '& .content': {
-          padding: '.5rem 1rem',
-          marginBottom: '.25rem',
-          borderRadius: '12px',
-          fontWeight: '500',
-          maxWidth: '380px',
-        },
-        '& .date': {
-          padding: '0 1rem',
-          fontWeight: 500,
-          fontSize: '14px',
-        },
-        '& .icon': {
-          fontSize: '28px',
-          color: colors['text-gray-700'],
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          gap: '10px',
+          '& .search-input': INPUT_TEXT,
+          '& .button-primary': BUTTON_PRIMARY_OUTLINE,
         },
       },
-    },
-    '& .message-form': {
-      '& .message-input': {
-        ...INPUT_TEXT,
-      },
-      '& .button-primary': BUTTON_PRIMARY,
     },
   },
 });

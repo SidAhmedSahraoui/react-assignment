@@ -89,8 +89,10 @@ export const SIDEBAR_TITLE = {
 };
 
 export const POSTITEM_CARD = {
+  padding: '16px 4px',
   borderRadius: '10px',
-  border: '2px solid #eee',
+  backgroundColor: colors['text-gray-300'],
+  border: `2px solid ${colors['text-gray-200']}`,
   '&:hover': {
     'box-shadow': '0px 13px 26px rgb(109,184,241, 0.16)',
   },

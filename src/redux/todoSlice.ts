@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
+
 import { TodoState } from '../types';
 
 const initialState: TodoState = {
@@ -18,16 +20,19 @@ const todoSlice = createSlice({
     addTodo: (state, action) => {
       state.todos.push(action.payload);
       localStorage.setItem('todos', state.todos.join(','));
+      toast.success('Todo added successfully');
     },
     // remove todo with index
     removeTodo: (state, action) => {
       state.todos.splice(action.payload, 1);
       localStorage.setItem('todos', state.todos.join(','));
+      toast.success('Todo removed successfully');
     },
     // edit todo with index
     editTodo: (state, action) => {
       state.todos[action.payload.index] = action.payload.todo;
       localStorage.setItem('todos', state.todos.join(','));
+      toast.success('Todo edited successfully');
     },
   },
 });
