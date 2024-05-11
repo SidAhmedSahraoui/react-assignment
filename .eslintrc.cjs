@@ -5,6 +5,7 @@ module.exports = {
     'airbnb',
     'airbnb-typescript',
     'airbnb/hooks',
+    'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
@@ -19,6 +20,11 @@ module.exports = {
   },
   plugins: ['react-refresh', 'prettier'],
   rules: {
+    'import/no-cycle': 'off',
+    'no-param-reassign': 'off',
+    'react/self-closing-comp': 'off',
+    'react/function-component-definition': 'off',
+    'import/no-extraneous-dependencies': 'off',
     'react/react-in-jsx-scope': 0,
     'react/jsx-no-useless-fragment': 'off',
     'react-refresh/only-export-components': [
