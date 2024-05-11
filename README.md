@@ -1,30 +1,11 @@
-# React + TypeScript + Vite
+# React Assignement
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+##### First I started with initializing the repository that will hold the app,
 
-Currently, two official plugins are available:
+##### I used vite since it is the recomended way to create new react app.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##### Then I configured react testing library with vitest , linting rules with eslint and airbnb guidelines, formating with prettier.
 
-## Expanding the ESLint configuration
+##### I started creating the first UI layoutes and components using ant design library , used redux for state management.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+##### Then I started writing the logic used for authentication and request call using axios, writing the logic for adding single todo, edit , delete and filter the list of todos.

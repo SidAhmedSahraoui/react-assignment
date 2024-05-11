@@ -61,14 +61,6 @@ export const BUTTON_TRANSPARENT = {
   },
 };
 
-export const LINK_PRIMARY = {
-  fontWeight: 500,
-  color: `${colors['text-gray-900']} !important`,
-  '&:hover': {
-    color: colors['text-gray-900'],
-  },
-};
-
 export const CARD_SHADOW = {
   borderRadius: '10px',
   'box-shadow': '0px 13px 26px rgb(109,184,241, 0.16)',
@@ -81,11 +73,6 @@ export const INPUT_TEXT = {
   '&:focus': {
     borderColor: colors['text-gray-400'],
   },
-};
-
-export const SIDEBAR_TITLE = {
-  fontWeight: 500,
-  color: colors['text-gray-500'],
 };
 
 export const POSTITEM_CARD = {
